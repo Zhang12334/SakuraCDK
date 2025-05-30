@@ -1,7 +1,7 @@
 package top.iseason.bukkittemplate.runtime.loader;
 
-import javax.management.loading.MLet;
 import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -12,14 +12,14 @@ import java.util.stream.Collectors;
  * <p>插件自定义的加载器，用于隔离依赖</p>
  * <p>本ClassLoader将优先加载urls中有的class，而不是双亲委托</p>
  */
-public class IsolatedClassLoader extends MLet {
+public class IsolatedClassLoader extends URLClassLoader {
     /**
      * 自由添加黑名单
      */
     public static final Set<String> BLACK_LIST = new HashSet<>();
 
     public IsolatedClassLoader(ClassLoader parent) {
-        this(new URL[0], parent);
+        super(new URL[0], parent);
     }
 
     public IsolatedClassLoader(URL[] urls, ClassLoader parent) {
@@ -27,7 +27,7 @@ public class IsolatedClassLoader extends MLet {
     }
 
     public IsolatedClassLoader() {
-        super();
+        super(new URL[0]);
     }
 
     @Override

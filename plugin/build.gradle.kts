@@ -22,6 +22,9 @@ dependencies {
     compileOnly(fileTree("libs") { include("*.jar") })
     compileOnly("fr.xephi:authme:5.6.0-SNAPSHOT") { isTransitive = false }
     implementation("org.bstats:bstats-bukkit:3.0.2")
+    
+    // PlaceholderAPI
+    compileOnly("me.clip:placeholderapi:2.11.5")
 }
 
 // 插件名称，请在gradle.properties 修改
